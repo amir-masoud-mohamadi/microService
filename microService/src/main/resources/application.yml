@@ -1,0 +1,15 @@
+server:
+ port: 8080
+
+spring:
+ application:
+  name: eureka-server
+
+eureka:
+ instance:
+  hostname: localhost
+ client:
+  registerWithEureka: true # ثبت خود در سرور دیگر
+  fetchRegistry: true      # دریافت رجیستری از همتا
+  serviceUrl:
+   defaultZone: http://localhost:8088/eureka/ # آدرس همتا
