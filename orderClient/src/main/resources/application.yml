@@ -6,12 +6,12 @@ spring:
   profiles:
     active: dev
   datasource:
-    url: jdbc:mysql://localhost:3306/springcloud10?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/deepseek?createDatabaseIfNotExist=true
     username: root
     password: admin
   jpa:
     hibernate:
-      ddl-auto: update         # یا validate/create-drop بسته به نیازتان
+      ddl-auto: create-drop         # یا validate/create-drop بسته به نیازتان
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
@@ -23,6 +23,6 @@ eureka:
       weight: 2 # برای Load Balancing
   client:
     serviceUrl:
-      defaultZone: http://localhost:8080/eureka/,http://localhost:8088/eureka/# ???? ???? ??????
+      defaultZone: http://localhost:8080/eureka/
     healthcheck:
       enabled: true

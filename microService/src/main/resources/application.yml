@@ -9,7 +9,7 @@ eureka:
  instance:
   hostname: localhost
  client:
-  registerWithEureka: true # ثبت خود در سرور دیگر
-  fetchRegistry: true      # دریافت رجیستری از همتا
+  registerWithEureka: false # خودش رو ثبت نکنه!
+  fetchRegistry: false # رجیستری رو نگه نداره
   serviceUrl:
-   defaultZone: http://localhost:8088/eureka/ # آدرس همتا
+   defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
