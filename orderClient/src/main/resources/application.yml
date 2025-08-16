@@ -1,29 +1,15 @@
-server:
-  port: 8082 # ???? ?????
 spring:
+  config:
+    # اگر می‌خواهی اپ حتی اگر Config Server در دسترس نبود بالا بیاید از optional استفاده کن.
+    import: "optional:configserver:"
   application:
-    name: order-service # ??? ???? ???? ??????? ?? ??????
-  profiles:
-    active: dev
-  datasource:
-    url: jdbc:mysql://localhost:3306/deepseek?createDatabaseIfNotExist=true
-    username: root
-    password: admin
-  jpa:
-    hibernate:
-      ddl-auto: create-drop         # یا validate/create-drop بسته به نیازتان
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
-        show_sql: true
-eureka:
-  instance:
-    metadata-map:
-      version: 2.1.0
-      region: tehran
-      weight: 2 # برای Load Balancing
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8080/eureka/
-    healthcheck:
-      enabled: true
+    name: order-service
+
+  cloud:
+    config:
+      uri: http://localhost:9090    # آدرس Config Server
+      fail-fast: true               # اگر می‌خواهی در صورت عدم دسترسی فوراً خطا بدهد؛ در حالت optional می‌توان false گذاشت
+
+# بقیه تنظیمات اپ (مثال)
+server:
+  port: 8086
